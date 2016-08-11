@@ -28,12 +28,12 @@ namespace Demo2m
             firefoxProfile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.ms-excel");
             var firefox = new FirefoxDriver(firefoxProfile);
             var methods = new Methods(firefox);
-         /*  methods.LoginDemo2mPage();
+           methods.LoginDemo2mPage();
             methods.SetUpFiltersSalesOut();
             methods.SendToExcel();
-            Thread.Sleep(4000);*/
+            Thread.Sleep(10000);
             methods.StoreExcelDataFromWeb();
-            methods.StoreExcelDataFromDB();
+            //methods.StoreExcelDataFromDB();
             
             firefox.Quit();
 

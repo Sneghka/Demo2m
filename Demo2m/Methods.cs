@@ -184,7 +184,10 @@ namespace Demo2m
             pageElements.PasswordElement.SendKeys("aspirin222");
             TryToClickWithoutException(PageElements.LoginButtonXPath, pageElements.LoginButton);
 
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PageElements.SearchMarketButtonXPath)));
+      wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PageElements.SearchMarketButtonXPath)));
+               
+
+
             TryToClickWithoutException(PageElements.SearchMarketButtonXPath, pageElements.SearchMarketButton);
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PageElements.InputMarketFieldXPath)));
             pageElements.InputMarketField.SendKeys("Sandoz");
@@ -281,13 +284,22 @@ namespace Demo2m
                           select f).First();
 
 
-           Console.WriteLine( myFile.Name);
+            Console.WriteLine(myFile.Name);
 
             DataTable dt = new DataTable();
-            WorkWithExcelFile.ExcelFileToDataTable(out dt, @"D:\DownloadTest\" + myFile, "Select * from [Sheet1$]");
+            /*string query = String.Format("select * from [{0}${1}]", "Sheet1", "A2:ZZ");*/
+            WorkWithExcelFile.ExcelFileToDataTable(out dt, @"D:\DownloadTest\" + myFile, "SELECT * from [Sheet1$A2:B]");
+
+           /* Console.WriteLine(dt.Rows.Count);
+            dt.Rows[0].Delete();
+            dt.Rows[dt.Rows.Count-1].Delete();
+            dt.AcceptChanges();
+            Console.WriteLine(dt.Rows.Count);*/
+
             foreach (DataRow row in dt.Rows)
             {
                 if (row[0] == DBNull.Value) continue;
+
                 var brand = row["Brand"].ToString().Trim().Replace("\u00A0", " ").ToLower();
                 //Console.WriteLine(brand);
                 var rowData = new RowData
@@ -298,14 +310,13 @@ namespace Demo2m
                 };
                 preparationPcsWeb282.Add(rowData);
             }
-            Console.WriteLine("Данные дашборда");
-            for (int i = 0; i < 9; i++)
-            {
+           /* Console.WriteLine("Данные дашборда");
+               for (int i = 0; i < 9; i++)
+               {
 
-                Console.WriteLine(preparationPcsWeb282[i].Brand + " / " + preparationPcsWeb282[i].Upakovki);
+                   Console.WriteLine(preparationPcsWeb282[i].Brand + " / " + preparationPcsWeb282[i].Upakovki);
 
-            }
-
+               }*/
         }
 
         public void StoreExcelDataFromDB()
