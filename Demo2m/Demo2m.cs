@@ -33,7 +33,8 @@ namespace Demo2m
             methods.SendToExcel();
             Thread.Sleep(10000);
             methods.StoreExcelDataFromWeb();
-            //methods.StoreExcelDataFromDB();
+            methods.StoreExcelDataFromDB();
+            methods.Compare();
             
             firefox.Quit();
 

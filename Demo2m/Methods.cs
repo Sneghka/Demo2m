@@ -183,11 +183,10 @@ namespace Demo2m
             pageElements.LoginElement.SendKeys("full_test");
             pageElements.PasswordElement.SendKeys("aspirin222");
             TryToClickWithoutException(PageElements.LoginButtonXPath, pageElements.LoginButton);
+            WaitForAjax();
 
-      wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PageElements.SearchMarketButtonXPath)));
-               
-
-
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PageElements.SearchMarketButtonXPath)));
+            
             TryToClickWithoutException(PageElements.SearchMarketButtonXPath, pageElements.SearchMarketButton);
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PageElements.InputMarketFieldXPath)));
             pageElements.InputMarketField.SendKeys("Sandoz");
@@ -287,14 +286,14 @@ namespace Demo2m
             Console.WriteLine(myFile.Name);
 
             DataTable dt = new DataTable();
-            /*string query = String.Format("select * from [{0}${1}]", "Sheet1", "A2:ZZ");*/
             WorkWithExcelFile.ExcelFileToDataTable(out dt, @"D:\DownloadTest\" + myFile, "SELECT * from [Sheet1$A2:B]");
+            /* WorkWithExcelFile.ExcelFileToDataTable(out dt, @"D:\DownloadTest\temp.xls", "SELECT * from [Sheet1$A2:B]");*/
 
-           /* Console.WriteLine(dt.Rows.Count);
+            // Console.WriteLine(dt.Rows.Count);
             dt.Rows[0].Delete();
-            dt.Rows[dt.Rows.Count-1].Delete();
+            dt.Rows[dt.Rows.Count - 1].Delete();
             dt.AcceptChanges();
-            Console.WriteLine(dt.Rows.Count);*/
+            //Console.WriteLine(dt.Rows.Count);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -310,7 +309,7 @@ namespace Demo2m
                 };
                 preparationPcsWeb282.Add(rowData);
             }
-           /* Console.WriteLine("Данные дашборда");
+            /*Console.WriteLine("Данные дашборда");
                for (int i = 0; i < 9; i++)
                {
 
@@ -351,7 +350,7 @@ namespace Demo2m
 
                     var rowData = new RowData
                     {
-                        Brand = reader["BRAND"].ToString().ToLower(),
+                        Brand = reader["BRAND"].ToString().Trim().ToLower(),
                         Upakovki = Convert.ToDecimal(reader["Q"])
                     };
 
@@ -362,16 +361,32 @@ namespace Demo2m
             {
                 conn.Close();
             }
-            Console.WriteLine("Данные БД");
+            /*Console.WriteLine("Данные БД");
             for (int i = 0; i < 20; i++)
             {
-
                 Console.WriteLine(preparationPcsDbList[i].Brand + " / " + preparationPcsDbList[i].Upakovki);
-
-            }
+            }*/
             myCommand.Dispose();
         }
 
+        public void Compare()
+        {
+            var differenceTotal = RowDataList.CompareTotal(preparationPcsWeb282, preparationPcsDbList);
+            var difference = RowDataList.ComparePCS(preparationPcsWeb282, preparationPcsDbList);
+            Console.WriteLine(differenceTotal);
+            if (difference.Count > 0)
+            {
+                foreach (var d in difference)
+                {
+                    Console.WriteLine(d);
+                }
+            }
+            else
+            {
+                
+                Console.WriteLine("Данные совпадают");
+            }
+        }
 
         public void email_send(string subject)
         {
