@@ -14,18 +14,18 @@ namespace Demo2m
         {
             return (from l1 in list1
                 join l2 in list2 on l1.Brand equals l2.Brand
-                where (l1.Upakovki - l2.Upakovki) > 1 || (l1.Upakovki - l2.Upakovki) < -1
-                select l1.Brand + "/ " + l1.Upakovki + " / "+ l2.Upakovki + " / разница = " + (l1.Upakovki - l2.Upakovki)).ToList();
+                where (l1.ComparedValue - l2.ComparedValue) > 1 || (l1.ComparedValue - l2.ComparedValue) < -1
+                select l1.Brand + "/ " + l1.ComparedValue + " / "+ l2.ComparedValue + " / difference = " + (l1.ComparedValue - l2.ComparedValue)).ToList();
            
         }
 
         public static decimal CompareTotal(RowDataList list1, RowDataList list2)
         {
             var total1 = (from l1 in list1
-                select l1.Upakovki).Sum();
+                select l1.ComparedValue).Sum();
 
             var total2 = (from l2 in list2
-                          select l2.Upakovki).Sum();
+                          select l2.ComparedValue).Sum();
             return total1 - total2;
 
 

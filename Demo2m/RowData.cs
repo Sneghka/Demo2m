@@ -11,8 +11,9 @@ namespace Demo2m
        
         public string SKU { get; set; }
         public string Brand { get; set; }
-        public decimal Upakovki { get; set; }
+        public decimal ComparedValue { get; set; }
         
-       
+
+
     }
 }
