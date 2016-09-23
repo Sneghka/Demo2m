@@ -40,7 +40,7 @@ namespace Demo2m
             methods.SendToExcel();
             Thread.Sleep(15000);
             methods.StoreExcelDataFromWeb();
-            methods.StoreExcelDataFromDB("201601006", "201601006");
+            methods.StoreExcelDataFromDB("201601008", "201601008");
             methods.Compare();
             firefox.Quit();
 
@@ -57,7 +57,7 @@ namespace Demo2m
             methods.SendToExcelPromo();
             Thread.Sleep(15000);
             methods.StoreExcelDataFromWebPromo();
-            methods.StoreExcelDataFromDB_Promo("201601006", "201601006");
+            methods.StoreExcelDataFromDB_Promo("201601008", "201601008");
             methods.Compare();
           
             firefox.Quit();
@@ -70,11 +70,11 @@ namespace Demo2m
             var methods = new Methods(firefox);
             methods.LoginDemo2mPage();
             methods.SetUpFiltersTV_Press_Radio("Press");   // parametr TV || Press || Radio
-            methods.SetUpPeriodTvPressRadio("2016 06_Jun");
+            //methods.SetUpPeriodTvPressRadio("2016 06_Jun");
             methods.SendToExcelTV_Press_Radio();
             Thread.Sleep(15000);
             methods.StoreExcelDataFromWebTV_Press_Radio();
-            methods.StoreExcelDataFromDB_TV_Press_Radio("201601006", "201601006", "Press");  // parametr TV || Press || Radio
+            methods.StoreExcelDataFromDB_TV_Press_Radio("201601008", "201601008", "Press");  // parametr TV || Press || Radio
             methods.Compare();
             firefox.Quit();
 

@@ -21,4 +21,3 @@ D:\Sneghka\Selenium\Projects\Every_Month_Tests\Demo2m\Demo2m\obj\Debug\Demo2m.cs
 D:\Sneghka\Selenium\Projects\Every_Month_Tests\Demo2m\Demo2m\bin\Debug\Demo2m.dll.config
 D:\Sneghka\Selenium\Projects\Every_Month_Tests\Demo2m\Demo2m\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 D:\Sneghka\Selenium\Projects\Every_Month_Tests\Demo2m\Demo2m\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb
-D:\Sneghka\Selenium\Projects\Every_Month_Tests\Demo2m\Demo2m\obj\Debug\Demo2m.csprojResolveAssemblyReference.cache

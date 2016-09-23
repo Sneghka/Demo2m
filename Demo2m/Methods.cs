@@ -583,13 +583,11 @@ namespace Demo2m
             {
                 while (reader.Read())
                 {
-
                     var rowData = new RowData
                     {
                         Brand = reader["BRAND"].ToString().Trim().ToLower(),
                         ComparedValue = Convert.ToDecimal(reader["Q"])
                     };
-
                     preparationPcsDbList.Add(rowData);
                 }
             }
